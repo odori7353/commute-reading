@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadingSessionController;
+use App\Http\Controllers\WeeklySummaryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/record', [ReadingSessionController::class, 'index'])->name('record');
     Route::post('/record/start', [ReadingSessionController::class, 'start'])->name('record.start');
     Route::post('/record/finish', [ReadingSessionController::class, 'finish'])->name('record.finish');
+
+    // 今週の合計
+    Route::get('/weekly', [WeeklySummaryController::class, 'index'])->name('weekly');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('record')" :active="request()->routeIs('record')">
                         記録
                     </x-nav-link>
+                    <x-nav-link :href="route('weekly')" :active="request()->routeIs('weekly')">
+                        今週
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -69,6 +72,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('record')" :active="request()->routeIs('record')">
                 記録
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('weekly')" :active="request()->routeIs('weekly')">
+                今週
             </x-responsive-nav-link>
         </div>
 

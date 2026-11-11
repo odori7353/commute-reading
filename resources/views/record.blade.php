@@ -45,6 +45,11 @@
                 @endif
 
             </div>
+
+            <a href="{{ route('weekly') }}"
+               class="block mt-6 text-center text-indigo-600 underline">
+                今週の合計を見る
+            </a>
         </div>
     </div>
 
