@@ -20,7 +20,20 @@ class ReadingSessionController extends Controller
             ->latest('started_at')
             ->first();
 
-        return view('record', ['current' => $current]);
+        // 行き・帰りの設定のうち、今より後でいちばん近い乗車日時
+        $now = now();
+        $nextDeparture = $request->user()
+            ->commuteSettings()
+            ->get()
+            ->map(fn ($setting) => $setting->nextDepartureAfter($now))
+            ->filter()
+            ->sort()
+            ->first();
+
+        return view('record', [
+            'current' => $current,
+            'nextDeparture' => $nextDeparture,
+        ]);
     }
 
     /**

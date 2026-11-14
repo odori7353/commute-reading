@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('weekly')" :active="request()->routeIs('weekly')">
                         今週
                     </x-nav-link>
+                    <x-nav-link :href="route('commute-settings.edit')" :active="request()->routeIs('commute-settings.*')">
+                        乗車時間
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -75,6 +78,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('weekly')" :active="request()->routeIs('weekly')">
                 今週
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('commute-settings.edit')" :active="request()->routeIs('commute-settings.*')">
+                乗車時間
             </x-responsive-nav-link>
         </div>
 

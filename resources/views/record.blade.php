@@ -9,6 +9,26 @@
         <div class="max-w-md mx-auto px-4">
             <div class="bg-white shadow-sm rounded-lg p-8 text-center">
 
+                {{-- 次の乗車（乗車時間設定から計算） --}}
+                @if ($nextDeparture)
+                    <p class="mb-4 text-sm text-gray-500">
+                        次の乗車は
+                        <span class="font-bold text-gray-800">
+                            @if ($nextDeparture->isToday())
+                                {{ $nextDeparture->format('G:i') }}
+                            @elseif ($nextDeparture->isTomorrow())
+                                明日 {{ $nextDeparture->format('G:i') }}
+                            @else
+                                {{ $nextDeparture->format('n/j') }}（{{ ['月','火','水','木','金','土','日'][$nextDeparture->dayOfWeekIso - 1] }}）{{ $nextDeparture->format('G:i') }}
+                            @endif
+                        </span>
+                    </p>
+                @else
+                    <p class="mb-4 text-sm text-gray-500">
+                        <a href="{{ route('commute-settings.edit') }}" class="underline">乗車時間を設定する</a>
+                    </p>
+                @endif
+
                 {{-- 終了したときのメッセージ --}}
                 @if (session('status'))
                     <p class="mb-6 text-green-700">{{ session('status') }}</p>

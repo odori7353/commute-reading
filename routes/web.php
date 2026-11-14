@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommuteSettingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadingSessionController;
 use App\Http\Controllers\WeeklySummaryController;
@@ -22,6 +23,10 @@ Route::middleware('auth')->group(function () {
 
     // 今週の合計
     Route::get('/weekly', [WeeklySummaryController::class, 'index'])->name('weekly');
+
+    // 乗車時間設定
+    Route::get('/commute-settings', [CommuteSettingController::class, 'edit'])->name('commute-settings.edit');
+    Route::put('/commute-settings', [CommuteSettingController::class, 'update'])->name('commute-settings.update');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
